@@ -176,9 +176,9 @@ public class ClientUI extends JFrame implements ActionListener, GUIInterface {
 
 	private void send() {
 		String data = m_txtInput.getText();
-		// printf("Sending message: " + data);
+		printf("Sending message: " + data);
 		if (m_crypto.sendMessage(data)) {
-			// printf("Sucessfully sent message");
+			printf("Sucessfully sent message");
 		} else {
 			printf("Unable to send message");
 		}

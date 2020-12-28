@@ -26,10 +26,12 @@ import javax.crypto.spec.PBEKeySpec;
 import javax.crypto.spec.PBEParameterSpec;
 import javax.xml.bind.DatatypeConverter;
 
+import lombok.extern.slf4j.Slf4j;
 import net.bounceme.chronos.vpn.common.DiffieHellmanHelper;
 import net.bounceme.chronos.vpn.common.GUIInterface;
 import net.bounceme.chronos.vpn.common.Helpers;
 
+@Slf4j
 public class Client implements ClientInterface {
 
 	// Encryption Constants
@@ -50,6 +52,8 @@ public class Client implements ClientInterface {
 
 	private String sharedSecret; // shared key
 	private SecretKey DESK; // session key
+	
+	private Socket clientSocket;
 
 	public Client(GUIInterface gui) {
 		m_gui = gui;
@@ -57,6 +61,11 @@ public class Client implements ClientInterface {
 
 	@Override
 	public void endConnection() {
+		try {
+			clientSocket.close();
+		} catch (IOException e) {
+			log.error("ERROR", e);
+		}
 	}
 
 	@Override
@@ -69,6 +78,7 @@ public class Client implements ClientInterface {
 				m_gui.printf(SERVER_IDENTIFICATION + " > " + modifiedSentence);
 
 			} catch (Exception e) {
+				log.error("ERROR", e);
 			}
 		}
 	}
@@ -84,6 +94,7 @@ public class Client implements ClientInterface {
 			write(out, encrypted);
 			m_gui.printf(CLIENT_IDENTIFICATION + " > " + s);
 		} catch (Exception e) {
+			log.error("ERROR", e);
 			return false;
 		}
 		return true;
@@ -93,7 +104,7 @@ public class Client implements ClientInterface {
 	public boolean startClient(String host, int port, String sharedKey) {
 		sharedSecret = sharedKey;
 		try {
-			Socket clientSocket = new Socket(host, port);
+			clientSocket = new Socket(host, port);
 
 			DiffieHellmanHelper helpme = new DiffieHellmanHelper();
 
@@ -172,6 +183,7 @@ public class Client implements ClientInterface {
 			DESK = helpme.keyAgreement.generateSecret("DES");
 			m_gui.connectionReady();
 		} catch (Exception e) {
+			log.error("ERROR", e);
 			return false;
 		}
 		return true;

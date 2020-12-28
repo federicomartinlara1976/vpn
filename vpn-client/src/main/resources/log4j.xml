@@ -20,10 +20,10 @@
 		<param name="originHost" value="localhost"/>
 		<param name="graylogPort" value="12201"/>
 		<param name="additionalFields"
-			value="{'environment': 'DEV', 'application': 'VPN'}" />
+			value="{'environment': 'DEV', 'application': 'VPN.client'}" />
 		<param name="extractStacktrace" value="true" />
 		<param name="addExtendedInformation" value="true" />
-		<param name="facility" value="log.client"/>	
+		<param name="facility" value="log"/>	
     	<param name="Threshold" value="DEBUG"/>
 	</appender>
 

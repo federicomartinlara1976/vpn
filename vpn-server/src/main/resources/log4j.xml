@@ -23,12 +23,22 @@
 			value="{'environment': 'DEV', 'application': 'VPN'}" />
 		<param name="extractStacktrace" value="true" />
 		<param name="addExtendedInformation" value="true" />
-		<param name="facility" value="log.server"/>	
+		<param name="facility" value="log"/>	
     	<param name="Threshold" value="DEBUG"/>
 	</appender>
 
 	<!-- Application Loggers -->
 	<logger name="net.bounceme.chronos.vpn">
+		<level value="DEBUG" />
+		<appender-ref ref="GRAYLOG" />
+	</logger>
+	
+	<logger name="net.bounceme.chronos.vpn.server">
+		<level value="DEBUG" />
+		<appender-ref ref="GRAYLOG" />
+	</logger>
+	
+	<logger name="net.bounceme.chronos.vpn.client">
 		<level value="DEBUG" />
 		<appender-ref ref="GRAYLOG" />
 	</logger>
