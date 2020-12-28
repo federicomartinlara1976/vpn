@@ -11,11 +11,13 @@ import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SpringLayout;
 
+import lombok.extern.slf4j.Slf4j;
 import net.bounceme.chronos.vpn.common.CryptoInterface;
 import net.bounceme.chronos.vpn.common.GUIInterface;
 import net.bounceme.chronos.vpn.server.Server;
 
 @SuppressWarnings("serial")
+@Slf4j
 public class ServerUI extends JFrame implements ActionListener, GUIInterface {
 
 	// Port
@@ -201,6 +203,7 @@ public class ServerUI extends JFrame implements ActionListener, GUIInterface {
 
 	@Override
 	public void printf(String s) {
+		log.debug("{}", s);
 		m_txtConsole.setText(m_txtConsole.getText() + s + "\n");
 	}
 
