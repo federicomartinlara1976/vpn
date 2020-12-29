@@ -17,17 +17,6 @@
 		<my.version>1.0.0</my.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.locale>es_ES</project.build.locale>
-		<chronoslibs.version>1.0.4-SNAPSHOT</chronoslibs.version>
-		<aspectj.version>1.7.4</aspectj.version>
-		<activemq.version>5.10.0</activemq.version>
-		<quartz.version>2.2.1</quartz.version>
-		<jsoup.version>1.8.3</jsoup.version>
-		<xml-apis.version>1.4.01</xml-apis.version>
-		<quartz.version>2.2.1</quartz.version>
-		<itext.version>RELEASE</itext.version>
-		<bouncycastle.version>1.49</bouncycastle.version>
-		<spring.version>4.3.18.RELEASE</spring.version>
-		<version.server.bom>7.2.0.GA</version.server.bom>
 	</properties>
 
 	<modules>
