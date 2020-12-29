@@ -1,9 +1,7 @@
 package net.bounceme.chronos.vpn.client;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.nio.ByteBuffer;
@@ -40,7 +38,7 @@ public class Client implements ClientInterface {
 			(byte) 0x59, (byte) 0x86 };
 	private static final int ITERATION_COUNT = 25;
 
-	private static PBEParameterSpec pbeParamSpec;
+//	private static PBEParameterSpec pbeParamSpec;
 
 	private static final String SERVER_IDENTIFICATION = "server";
 	private static final String CLIENT_IDENTIFICATION = "client";
@@ -109,7 +107,7 @@ public class Client implements ClientInterface {
 
 			DiffieHellmanHelper helpme = new DiffieHellmanHelper();
 
-			BufferedReader userdata = new BufferedReader(new InputStreamReader(System.in));
+//			BufferedReader userdata = new BufferedReader(new InputStreamReader(System.in));
 			out = clientSocket.getOutputStream();
 			in = clientSocket.getInputStream();
 
