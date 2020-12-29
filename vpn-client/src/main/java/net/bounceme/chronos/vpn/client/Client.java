@@ -34,6 +34,7 @@ import net.bounceme.chronos.vpn.common.Helpers;
 @Slf4j
 public class Client implements ClientInterface {
 
+	private static final String KEY_ALGORITHM = "DES";
 	// Encryption Constants
 	private static final byte[] SALT = { (byte) 0xa0, (byte) 0x4e, (byte) 0x2b, (byte) 0x92, (byte) 0x4a, (byte) 0xd6,
 			(byte) 0x59, (byte) 0x86 };
@@ -180,7 +181,7 @@ public class Client implements ClientInterface {
 
 			// since the Key Agreement object was reset we regen it
 			helpme.keyAgreement.doPhase(serverPubK, true);
-			DESK = helpme.keyAgreement.generateSecret("DES");
+			DESK = helpme.keyAgreement.generateSecret(KEY_ALGORITHM);
 			m_gui.connectionReady();
 		} catch (Exception e) {
 			log.error("ERROR", e);
